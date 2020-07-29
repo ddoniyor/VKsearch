@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class NetworkUtils {
@@ -19,9 +20,9 @@ public class NetworkUtils {
         Uri builtUri = Uri.parse(VK_API_BASE_URL+VK_USERS_GET)
                 .buildUpon()
                 .appendQueryParameter(PARAM_USER_ID,userId)
-                .appendQueryParameter(PARAM_VERSION,"5.8")
+                .appendQueryParameter(PARAM_VERSION,"5.21")
                 .appendQueryParameter(ACCESS_TOKEN,
-                        "c6044b7fc6044b7fc6044b7fb4c6608dc6cc604c6044b7f9d256697c11625abfcfd58b4")
+                        "f22ecfc6f22ecfc6f22ecfc6f0f25df556ff22ef22ecfc6ad31138401a07a65f4450caf")
                 .build();
         URL url = null;
         try {
@@ -48,6 +49,8 @@ public class NetworkUtils {
             } else {
                 return null;
             }
+        }catch (UnknownHostException e){
+            return null;
         }finally {
             urlConnection.disconnect();
         }
